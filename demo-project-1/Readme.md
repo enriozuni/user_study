@@ -1,5 +1,7 @@
-# Demo Project 2
-Demo Project 2 contains a to-do list application. Instructions on how to use it are specified below.
+# Demo Project 1
+Demo Project 1 contains code excerpts showcasing vulnerabilities which are then specified in [Demo Project Specifications](https://github.com/enriozuni/user_study/tree/main/demo-project-specifications).
+
+This demo project is actually a to-do list application. Instructions on how to use it are specified below.
 
 # To-do list Application
 
