@@ -1,3 +1,6 @@
+# Demo Project 2
+Demo Project 2 contains a to-do list application. Instructions on how to use it are specified below.
+
 # To-do list Application
 
 This demo applications helps its users to create, edit and delete tasks. They can also have attachments with them. This application is used as an example for testing Secucheck to find vulnerabilities in applications.
