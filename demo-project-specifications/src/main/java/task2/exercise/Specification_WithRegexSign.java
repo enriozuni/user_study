@@ -19,11 +19,10 @@ public class Specification_WithRegexSign implements FluentTQLUserInterface {
      * Source
      */
     public String sourceMethodSign = "example.Main: void updateAccount (java.lang.String)";
+    
     public Method sourceMethod = new MethodConfigurator(sourceMethodSign)
             .out().param(0)
             .configure();
-    
-    
     
     
     /**
@@ -31,6 +30,7 @@ public class Specification_WithRegexSign implements FluentTQLUserInterface {
      */
     // ToDo: specify the method signature for all three sinks
     public String sinkMethodSign;
+    
     public Method sinkMethod = new MethodConfigurator(sinkMethodSign)
             .in().param(0)
             .configure();

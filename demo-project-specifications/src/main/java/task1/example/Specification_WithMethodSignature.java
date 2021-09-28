@@ -14,14 +14,7 @@ import de.fraunhofer.iem.secucheck.InternalFluentTQL.fluentInterface.Specificati
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * CWE-22: Improper Limitation of a Pathname to a Restricted Directory (Path Traversal)
- * <p>
- * The software uses external input to construct a pathname that is intended to identify
- * a file or directory that is located underneath a restricted parent directory,
- * but the software does not properly neutralize special elements within the pathname
- * that can cause the pathname to resolve to a location that is outside of the restricted directory.
- */
+
 @FluentTQLSpecificationClass
 public class Specification_WithMethodSignature implements FluentTQLUserInterface {
 
@@ -29,10 +22,10 @@ public class Specification_WithMethodSignature implements FluentTQLUserInterface
      * Source
      */
     public MethodSignature sourceMethodSign = new MethodSignatureConfigurator()
-            .atClass("de.fraunhofer.iem.secucheck.todolist.controllers.NewTaskController")
+            .atClass("example.Main")
             .returns("java.lang.String")
-            .named("saveTask")
-            .accepts("de.fraunhofer.iem.secucheck.todolist.model.Task , org.springframework.web.multipart.MultipartFile , org.springframework.web.servlet.mvc.support.RedirectAttributes")
+            .named("source")
+            .accepts("java.lang.String[]")
             .configure();
     
     public Method sourceMethod = new MethodConfigurator(sourceMethodSign)
@@ -40,36 +33,18 @@ public class Specification_WithMethodSignature implements FluentTQLUserInterface
             .configure();
 
     
-    
-    /**
-     * Sanitizer
-     */
-    public MethodSignature sanitizerMethodSign = new MethodSignatureConfigurator()
-    		.atClass("de.fraunhofer.iem.secucheck.todolist.controllers.NewTaskController")
-    		.returns("java.lang.String")
-    		.named("correctFileName")
-    		.accepts("java.lang.String")
-    		.configure();
-    
-    public Method sanitizerMethod = new MethodConfigurator(sanitizerMethodSign)
-            .in().param(0)
-            .out().returnValue()
-            .configure();
-
-    
-    
     /**
      * Sink
      */
     public MethodSignature sinkMethodSign = new MethodSignatureConfigurator()
-    		.atClass("de.fraunhofer.iem.secucheck.todolist.service.DirectoryStorageService")
-    		.returns("java.lang.String")
-    		.named("store")
-    		.accepts("org.springframework.web.multipart.MultipartFile , de.fraunhofer.iem.secucheck.todolist.model.Task , java.lang.String")
+    		.atClass("example.Main")
+    		.returns("void")
+    		.named("sink")
+    		.accepts("java.lang.String")
     		.configure();
     
     public Method sinkMethod = new MethodConfigurator(sinkMethodSign)
-            .in().param(1)
+            .in().param(0)
             .configure();
 
     
@@ -80,11 +55,10 @@ public class Specification_WithMethodSignature implements FluentTQLUserInterface
      * @return Internal FluentTQL specifications
      */
     public List<FluentTQLSpecification> getFluentTQLSpecification() {
-        TaintFlowQuery myTF = new TaintFlowQueryBuilder("CWE22_PathTraversal_WithMethodSign")
+        TaintFlowQuery myTF = new TaintFlowQueryBuilder("Example_Specification_WithMethodSign")
                 .from(sourceMethod)
-                .notThrough(sanitizerMethod)
                 .to(sinkMethod)
-                .report("CWE-22 detected: Path Traversal from untrusted value 'Task newTask'")
+                .report("There is a possible taint flow from source to the sink method.")
                 .at(LOCATION.SOURCEANDSINK)
                 .build();
 

@@ -24,8 +24,6 @@ public class Specification_WithRegexSign implements FluentTQLUserInterface {
             .configure();
     
     
-    
-    
     /**
      * Sinks
      */

@@ -13,6 +13,7 @@ import de.fraunhofer.iem.secucheck.InternalFluentTQL.fluentInterface.MethodPacka
 import de.fraunhofer.iem.secucheck.InternalFluentTQL.fluentInterface.Query.TaintFlowQuery;
 import de.fraunhofer.iem.secucheck.InternalFluentTQL.fluentInterface.SpecificationInterface.FluentTQLUserInterface;
 
+
 @FluentTQLSpecificationClass
 public class Specification_WithMultipleSign implements FluentTQLUserInterface {
 
@@ -20,17 +21,17 @@ public class Specification_WithMultipleSign implements FluentTQLUserInterface {
      * Source
      */
     public String sourceMethodSign = "example.Main: java.lang.String source (java.lang.String[])";
+    
     public Method sourceMethod = new MethodConfigurator(sourceMethodSign)
             .out().param(0)
             .configure();
-    
-    
     
     
     /**
      * Sink 1
      */
     public String sinkMethodSign1 = "example.Main: void sink (java.lang.String)";
+    
     public Method sinkMethod1 = new MethodConfigurator(sinkMethodSign1)
             .in().param(0)
             .configure();
@@ -39,6 +40,7 @@ public class Specification_WithMultipleSign implements FluentTQLUserInterface {
      * Sink 2
      */
     public String sinkMethodSign2 = "example.Main: void sink (java.lang.String , java.lang.String)";
+    
     public Method sinkMethod2 = new MethodConfigurator(sinkMethodSign2)
             .in().param(0)
             .configure();
@@ -46,7 +48,8 @@ public class Specification_WithMultipleSign implements FluentTQLUserInterface {
     /**
      * Sink 3
      */
-    public String sinkMethodSign3 = "example.Main: void sink (java.lang.String , java.lang.String, int)";
+    public String sinkMethodSign3 = "example.Main: void sink (java.lang.String , java.lang.String , int)";
+    
     public Method sinkMethod3 = new MethodConfigurator(sinkMethodSign3)
             .in().param(0)
             .configure();

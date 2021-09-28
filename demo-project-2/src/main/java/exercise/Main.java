@@ -8,18 +8,18 @@ import java.util.Random;
 public class Main {
 
 	static final String DB_URL = "168.192.0.1";
-	static final String USER = "guest";
-	static final String PASS = "pass123";
+	static final String USER = "admin";
+	static final String PASS = "admin123";
 	
 	public static void main(String[] args) throws SQLException {
 		updateAccount(args[0]);
 	}
 	
+	
 	// SOURCE
 	public static void updateAccount(String customerId) throws SQLException {
-		String query = " UPDATE people SET name =' John ' where id = ' "
-				+ customerId
-				+ "'";
+		
+		String query = " UPDATE people SET name = 'John' where id = " + customerId;
 		Connection c = DriverManager.getConnection(DB_URL, USER, PASS);
 		
 		if(customerId.length() == 10) {
@@ -41,6 +41,7 @@ public class Main {
 		else {
 			System.out.println("Cannot update the customer ID.");
 		}
+		
 	}
 	
 

@@ -7,7 +7,7 @@ public class Main {
 		// SOURCE
 		String tainted = source(args);
 		
-		String random = "randomValue";
+		String strValue = "string value";
 		
 		int intValue = 1;
 		
@@ -15,10 +15,10 @@ public class Main {
 		sink(tainted);
 		
 		// SINK 2
-		sink(tainted, random);
+		sink(tainted, strValue);
 		
 		// SINK 3
-		sink(tainted, random, intValue);
+		sink(tainted, strValue, intValue);
 		
 	}
 	
@@ -34,8 +34,8 @@ public class Main {
 		}
 	}
 	
-	public static void sink(String param) {
-		System.out.println(param);
+	public static void sink(String param1) {
+		System.out.println(param1);
 	}
 	
 	public static void sink(String param1, String param2) {
@@ -43,10 +43,10 @@ public class Main {
 		System.out.println(param2);
 	}
 	
-	public static void sink(String tainted, String random, int intValue) {
-		System.out.println(tainted);
-		System.out.println(random);
-		System.out.println(intValue);
+	public static void sink(String param1, String param2, int param3) {
+		System.out.println(param1);
+		System.out.println(param2);
+		System.out.println(param3);
 	}
 	
 }

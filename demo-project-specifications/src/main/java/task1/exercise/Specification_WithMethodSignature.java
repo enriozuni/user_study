@@ -14,12 +14,7 @@ import de.fraunhofer.iem.secucheck.InternalFluentTQL.fluentInterface.Specificati
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * CWE-79: Improper Neutralization of Input During Web Page Generation (Cross-site Scripting)
- * <p>
- * The software does not neutralize or incorrectly neutralizes user-controllable input before
- * it is placed in output that is used as a web page that is served to other users.
- */
+
 @FluentTQLSpecificationClass
 public class Specification_WithMethodSignature implements FluentTQLUserInterface {
 
@@ -32,36 +27,16 @@ public class Specification_WithMethodSignature implements FluentTQLUserInterface
     public Method sourceMethod = new MethodConfigurator(sourceMethodSign)
             .out().param(0)
             .configure();
-
-    
-    
-
-    /**
-     * Sanitizer
-     */
-    public MethodSignature sanitizerMethodSign = new MethodSignatureConfigurator()
-    		.atClass("de.fraunhofer.iem.secucheck.todolist.controllers.LoginController")
-    		.returns("de.fraunhofer.iem.secucheck.todolist.model.User")
-    		.named("NameIt")
-    		.accepts("de.fraunhofer.iem.secucheck.todolist.model.User")
-    		.configure();
-    
-    public Method sanitizerMethod = new MethodConfigurator(sanitizerMethodSign)
-            .in().param(0)
-            .out().returnValue()
-            .configure();
-
-
     
     
     /**
      * Sink
      */
     public MethodSignature sinkMethodSign = new MethodSignatureConfigurator()
-            .atClass("de.fraunhofer.iem.secucheck.todolist.service.UserService")
-            .returns("void")
-            .named("saveUserDefault")
-            .accepts("de.fraunhofer.iem.secucheck.todolist.model.User")
+            .atClass("exercise.Main")
+            .returns("java.sql.ResultSet")
+            .named("executeQuery")
+            .accepts("java.lang.String")
             .configure();
     
     public Method sinkMethod = new MethodConfigurator(sinkMethodSign)
@@ -77,10 +52,10 @@ public class Specification_WithMethodSignature implements FluentTQLUserInterface
      * @return Internal FluentTQL specifications
      */
     public List<FluentTQLSpecification> getFluentTQLSpecification() {
-        TaintFlowQuery myTF = new TaintFlowQueryBuilder("CWE79_CrossSiteScripting_WithMethodSign")
+        TaintFlowQuery myTF = new TaintFlowQueryBuilder("Exercise_Specification_WithMethodSign")
                 .from(sourceMethod)
                 .to(sinkMethod)
-                .report("CWE-79 detected: Cross-site Scripting from untrusted value 'String pattern'")
+                .report("There is a possible taint flow from source to the sink method.")
                 .at(LOCATION.SOURCEANDSINK)
                 .build();
 

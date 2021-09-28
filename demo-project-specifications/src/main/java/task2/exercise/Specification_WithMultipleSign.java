@@ -20,11 +20,10 @@ public class Specification_WithMultipleSign implements FluentTQLUserInterface {
      * Source
      */
     public String sourceMethodSign = "example.Main: void updateAccount (java.lang.String)";
+    
     public Method sourceMethod = new MethodConfigurator(sourceMethodSign)
             .out().param(0)
             .configure();
-    
-    
     
     
     /**
@@ -32,6 +31,7 @@ public class Specification_WithMultipleSign implements FluentTQLUserInterface {
      */
     // ToDo: specify the method signature for the first sink
     public String sinkMethodSign1;
+    
     public Method sinkMethod1 = new MethodConfigurator(sinkMethodSign1)
             .in().param(0)
             .configure();
@@ -41,6 +41,7 @@ public class Specification_WithMultipleSign implements FluentTQLUserInterface {
      */
     // ToDo: specify the method signature for the second sink
     public String sinkMethodSign2;
+    
     public Method sinkMethod2 = new MethodConfigurator(sinkMethodSign2)
             .in().param(0)
             .configure();
@@ -50,6 +51,7 @@ public class Specification_WithMultipleSign implements FluentTQLUserInterface {
      */
     // ToDo: specify the method signature for the third sink
     public String sinkMethodSign3;
+    
     public Method sinkMethod3 = new MethodConfigurator(sinkMethodSign3)
             .in().param(0)
             .configure();
