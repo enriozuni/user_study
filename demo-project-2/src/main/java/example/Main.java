@@ -22,9 +22,6 @@ public class Main {
 		
 	}
 	
-	
-	
-	
 	public static String source(String[] args) {
 		if(args.length == 0) {
 			return "is empty";
